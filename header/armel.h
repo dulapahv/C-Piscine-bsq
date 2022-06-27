@@ -28,6 +28,11 @@ typedef struct s_map
 	char	square;
 }	t_map;
 
+/*** ft_map_utility.c ***/
+void	create_map(t_map *map);
+void	setup_map(t_map *map, int map_row, int map_column, int **arr);
+void	setup_char(t_map *map, char obstacle, char free, char square);
+
 /*** read_file.c ***/
 int		read_file(int argc, char *map_name);
 
