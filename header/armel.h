@@ -37,4 +37,8 @@ int		ft_atoi(char *str);
 void	ft_putstr(char *str);
 void	msg_error(void);
 
+/*** ft_string.c ***/
+int	ft_spec_strlen(char *str, char c);
+int	ft_wordcount(char *str, char c);
+
 #endif

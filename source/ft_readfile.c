@@ -1,21 +1,36 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   read_file.c                                        :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: duvibuls <marvin@42.fr>                    +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/27 20:47:54 by duvibuls          #+#    #+#             */
-/*   Updated: 2022/06/28 01:27:08 by tponutha         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
 
 #include "../header/armel.h"
+#define BUFFER 10240
 
-int	read_file(int argc, char *map_name)
+void	*ft_error(void)
 {
-	ft_putstr(map_name);
-	if (argc == 1)
-		return (0);
-	return (1);
+	write(1, "Error\n", 6);
+	return (NULL);
+}
+
+char	*ft_readfile(char *file_name)
+{
+    int		fd;
+    int		filelen;
+    char	*content;
+
+	content = (char *)malloc(sizeof(char) * BUFFER + 1);
+	if (!content)
+		return (ft_error());
+	fd = open(file_name, O_RDONLY);
+	if (fd == -1)
+	{
+		free(content);
+		return (ft_error());
+	}
+	filelen = read(fd, content, BUFFER);
+	content[filelen] = 0;
+	return (content);
+}
+
+#include <stdio.h>
+int	main()
+{
+	char *a = ft_readfile("bruh.txt");
+	printf("%s\n",a);
 }
