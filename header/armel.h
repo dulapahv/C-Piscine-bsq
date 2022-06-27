@@ -40,6 +40,6 @@ void	msg_error(void);
 /*** ft_string.c ***/
 int	ft_spec_strlen(char *str, char c);
 int	ft_wordcount(char *str, char c);
-int	ft_is_not_alphabet(char *str);
+int	ft_is_not_printable(char *str);
 
 #endif
