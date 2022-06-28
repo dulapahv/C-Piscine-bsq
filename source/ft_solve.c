@@ -88,7 +88,7 @@ void	find_max(t_map *map)
 	}
 }
 
-void	find_ans_pos(t_map *map)
+int	find_ans_pos(t_map *map)
 {
 	int	i;
 	int	j;
@@ -101,19 +101,62 @@ void	find_ans_pos(t_map *map)
 		{
 			if (map->arr[i][j] == map->max)
 			{
-				map->ans_pos[0] = i;
-				map->ans_pos[1] = j;
+				map->ans_pos_start[0] = i;
+				map->ans_pos_start[1] = j;
+				return (0);
 			}
 			j++;
 		}
 		i++;
 	}
+	return (0);
 }
 
-// void	swarm(t_map *map)
-// {
-	
-// }
+int	swarm_row(t_map *map)
+{
+	int	i;
+	int	j;
+	int	limit;
+
+	i = map->ans_pos_start[1];
+	limit = map->row;
+	while (i < map->col)
+	{
+		j = map->ans_pos_start[0];
+		while (j < limit)
+		{
+			if (map->obs_pos[j][i])
+				limit = i;
+			j++;
+		}
+		i++;
+	}
+	map->ans_pos_end[0] = limit + map->ans_pos_start[0];
+	return (0);
+}
+
+int	swarm_col(t_map *map)
+{
+	int	i;
+	int	j;
+	int	limit;
+
+	i = map->ans_pos_start[0];
+	limit = map->col;
+	while (i < map->row)
+	{
+		j = map->ans_pos_start[1];
+		while (j < limit)
+		{
+			if (map->obs_pos[i][j])
+				limit = j;
+			j++;
+		}
+		i++;
+	}
+	map->ans_pos_end[1] = limit + map->ans_pos_start[1];
+	return (0);
+}
 
 
 int	solve(t_map *map)
@@ -122,8 +165,12 @@ int	solve(t_map *map)
 	back_traverse(map);
 	find_max(map);
 	find_ans_pos(map);
-	//swarm(map);
-	printf("x = %d, y = %d\n", map->ans_pos[0], map->ans_pos[1]);
+	swarm_row(map);
+	swarm_col(map);
+
+	printf("max = %d\n", map->max);
+	printf("x = %d, y = %d\n", map->ans_pos_start[0], map->ans_pos_start[1]);
+	printf("x = %d, y = %d\n", map->ans_pos_end[0], map->ans_pos_end[1]);
 	for (int i = 0; i < 5; i++) {
 		for (int j = 0; j < 5; j++)
 		{
@@ -131,6 +178,7 @@ int	solve(t_map *map)
 		}
 		printf("\n");
 	}
+	
 
 	return (1);
 }
@@ -145,7 +193,8 @@ int main() {
 	map->obs_pos = (int **)malloc(5 * sizeof(int *));
 	for (int i=0; i<5; i++)
 		map->obs_pos[i] = (int *)malloc(5 * sizeof(int));
-	map->ans_pos = (int *)malloc(2 * sizeof(int));
+	map->ans_pos_start = (int *)malloc(2 * sizeof(int));
+	map->ans_pos_end = (int *)malloc(2 * sizeof(int));
 
 	map->arr[0][0] = 0; map->obs_pos[0][0] = 0;
 	map->arr[0][1] = 1; map->obs_pos[0][1] = 1;

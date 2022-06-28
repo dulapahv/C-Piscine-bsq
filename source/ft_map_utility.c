@@ -18,7 +18,8 @@ void	create_map(t_map *map)
 	map->col = 0;
 	map->arr = NULL;
 	map->obs_pos = NULL;
-	map->ans_pos = NULL;
+	map->ans_pos_start = NULL;
+	map->ans_pos_end = NULL;
 	map->obs = '\0';
 	map->free = '\0';
 	map->square = '\0';

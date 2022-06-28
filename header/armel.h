@@ -23,7 +23,8 @@ typedef struct s_map
 	int		max;
 	int		**arr;
 	int		**obs_pos;
-	int		*ans_pos;
+	int		*ans_pos_start;
+	int		*ans_pos_end;
 	char	obs;
 	char	free;
 	char	square;
