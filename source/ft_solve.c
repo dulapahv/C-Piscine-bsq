@@ -19,16 +19,16 @@ void	reverse(t_map *map)
 	int	j;
 
 	i = 0;
-	while (i < map->map_row)
+	while (i < map->row)
 	{
 		j = 0;
-		while (j < map->map_column)
+		while (j < map->col)
 		{
-			if (i == map->map_row - 1 && map->arr[i][j] == 0)
+			if (i == map->row - 1 && map->arr[i][j] == 0)
 				map->arr[i][j] = 1;
-			if (j == map->map_column - 1 && map->arr[i][j] == 0)
+			if (j == map->col - 1 && map->arr[i][j] == 0)
 				map->arr[i][j] = 1;
-			if (map->arr[i][j] == map->obstacle_pos[i][j])
+			if (map->arr[i][j] == map->obs_pos[i][j])
 				map->arr[i][j] = 0;
 			j++;
 		}
@@ -53,14 +53,15 @@ void	back_traverse(t_map *map)
 	int	i;
 	int	j;
 
-	i = map->map_row - 1;
+	i = map->row - 1;
 	while (i >= 0)
 	{
-		j = map->map_column - 1;
+		j = map->col - 1;
 		while (j >= 0)
 		{
-			if (i <= map->map_row - 2 && j <= map->map_column - 2 && !map->obstacle_pos[i][j])
-				map->arr[i][j] = 1 + min3(map->arr[i][j + 1], map->arr[i - 1][j - 1], map->arr[i - 1][j]);
+			if (!map->obs_pos[i][j])
+				if (i <= map->row - 2 && j <= map->col - 2)
+					map->arr[i][j] = 1 + min3(map->arr[i][j + 1], map->arr[i + 1][j + 1], map->arr[i + 1][j]);
 			j--;
 		}
 		i--;
@@ -70,6 +71,7 @@ void	back_traverse(t_map *map)
 int	solve(t_map *map)
 {
 	reverse(map);
+	back_traverse(map);
 	for (int i = 0; i < 5; i++) {
 		for (int j = 0; j < 5; j++)
 		{
@@ -88,38 +90,38 @@ int main() {
 	map->arr = (int **)malloc(5 * sizeof(int *));
 	for (int i=0; i<5; i++)
 		map->arr[i] = (int *)malloc(5 * sizeof(int));
-	map->obstacle_pos = (int **)malloc(5 * sizeof(int *));
+	map->obs_pos = (int **)malloc(5 * sizeof(int *));
 	for (int i=0; i<5; i++)
-		map->obstacle_pos[i] = (int *)malloc(5 * sizeof(int));
+		map->obs_pos[i] = (int *)malloc(5 * sizeof(int));
 
-	map->arr[0][0] = 0;
-	map->arr[0][1] = 1; map->obstacle_pos[0][1] = 1;
-	map->arr[0][2] = 0;
-	map->arr[0][3] = 0;
-	map->arr[0][4] = 0;
-	map->arr[1][0] = 0;
-	map->arr[1][1] = 0;
-	map->arr[1][2] = 0;
-	map->arr[1][3] = 0;
-	map->arr[1][4] = 0;
-	map->arr[2][0] = 1; map->obstacle_pos[2][0] = 1;
-	map->arr[2][1] = 0;
-	map->arr[2][2] = 0;
-	map->arr[2][3] = 0;
-	map->arr[2][4] = 0;
-	map->arr[3][0] = 0;
-	map->arr[3][1] = 0;
-	map->arr[3][2] = 0;
-	map->arr[3][3] = 0;
-	map->arr[3][4] = 1; map->obstacle_pos[3][4] = 1;
-	map->arr[4][0] = 0;
-	map->arr[4][1] = 0;
-	map->arr[4][2] = 1; map->obstacle_pos[4][2] = 1;
-	map->arr[4][3] = 0;
-	map->arr[4][4] = 0;
+	map->arr[0][0] = 0; map->obs_pos[0][0] = 0;
+	map->arr[0][1] = 1; map->obs_pos[0][1] = 1;
+	map->arr[0][2] = 0; map->obs_pos[0][2] = 0;
+	map->arr[0][3] = 0; map->obs_pos[0][3] = 0;
+	map->arr[0][4] = 0; map->obs_pos[0][4] = 0;
+	map->arr[1][0] = 0; map->obs_pos[1][0] = 0;
+	map->arr[1][1] = 0; map->obs_pos[1][1] = 0;
+	map->arr[1][2] = 0; map->obs_pos[1][2] = 0;
+	map->arr[1][3] = 0; map->obs_pos[1][3] = 0;
+	map->arr[1][4] = 0; map->obs_pos[1][4] = 0;
+	map->arr[2][0] = 1; map->obs_pos[2][0] = 1;
+	map->arr[2][1] = 0; map->obs_pos[2][1] = 0;
+	map->arr[2][2] = 0; map->obs_pos[2][2] = 0;
+	map->arr[2][3] = 0; map->obs_pos[2][3] = 0;
+	map->arr[2][4] = 0; map->obs_pos[2][4] = 0;
+	map->arr[3][0] = 0; map->obs_pos[3][0] = 0;
+	map->arr[3][1] = 0; map->obs_pos[3][1] = 0;
+	map->arr[3][2] = 0; map->obs_pos[3][2] = 0;
+	map->arr[3][3] = 0; map->obs_pos[3][3] = 0;
+	map->arr[3][4] = 1; map->obs_pos[3][4] = 1;
+	map->arr[4][0] = 0; map->obs_pos[4][0] = 0;
+	map->arr[4][1] = 0; map->obs_pos[4][1] = 0;
+	map->arr[4][2] = 1; map->obs_pos[4][2] = 1;
+	map->arr[4][3] = 0; map->obs_pos[4][3] = 0;
+	map->arr[4][4] = 0; map->obs_pos[4][4] = 0;
 
-	map->map_row = 5;
-	map->map_column = 5;
+	map->row = 5;
+	map->col = 5;
 
 
 	solve(map);

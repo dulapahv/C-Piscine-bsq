@@ -18,20 +18,20 @@
 
 typedef struct s_map
 {
-	int		map_row;
-	int		map_column;
+	int		row;
+	int		col;
 	int		**arr;
-	int		**obstacle_pos;
+	int		**obs_pos;
 	int		**ans_pos;
-	char	obstacle;
+	char	obs;
 	char	free;
 	char	square;
 }	t_map;
 
 /*** ft_map_utility.c ***/
 void	create_map(t_map *map);
-void	setup_map(t_map *map, int map_row, int map_column, int **arr);
-void	setup_char(t_map *map, char obstacle, char free, char square);
+void	setup_map(t_map *map, int row, int col, int **arr);
+void	setup_char(t_map *map, char obs, char free, char square);
 
 /*** read_file.c ***/
 int		read_file(int argc, char *map_name);
