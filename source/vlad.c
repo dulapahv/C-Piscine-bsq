@@ -9,7 +9,7 @@
 /*   Updated: 2022/06/28 01:28:51 by tponutha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-/*
+
 #include "../header/armel.h"
 
 int	main(int argc, char **argv)
@@ -36,4 +36,3 @@ int	main(int argc, char **argv)
 	}
 	return (0);
 }
-*/

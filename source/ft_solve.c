@@ -168,16 +168,16 @@ int	solve(t_map *map)
 	swarm_row(map);
 	swarm_col(map);
 
-	printf("max = %d\n", map->max);
+	//printf("max = %d\n", map->max);
 	printf("x = %d, y = %d\n", map->ans_pos_start[0], map->ans_pos_start[1]);
 	printf("x = %d, y = %d\n", map->ans_pos_end[0], map->ans_pos_end[1]);
-	for (int i = 0; i < 5; i++) {
-		for (int j = 0; j < 5; j++)
-		{
-			printf("%d", map->arr[i][j]);
-		}
-		printf("\n");
-	}
+	// for (int i = 0; i < 5; i++) {
+	// 	for (int j = 0; j < 5; j++)
+	// 	{
+	// 		printf("%d", map->arr[i][j]);
+	// 	}
+	// 	printf("\n");
+	// }
 	
 
 	return (1);

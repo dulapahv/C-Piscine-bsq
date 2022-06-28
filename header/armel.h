@@ -18,35 +18,32 @@
 
 typedef struct s_map
 {
-	int		row;
-	int		col;
-	int		max;
+	int		map_row;
+	int		map_column;
 	int		**arr;
-	int		**obs_pos;
-	int		*ans_pos_start;
-	int		*ans_pos_end;
-	char	obs;
+	int		**obstacle_pos;
+	int		**ans_pos;
+	char	obstacle;
 	char	free;
 	char	square;
 }	t_map;
 
-/*** ft_map_utility.c ***/
-void	create_map(t_map *map);
-void	setup_map(t_map *map, int row, int col, int **arr);
-void	setup_char(t_map *map, char obs, char free, char square);
+/*** ft_readfile.c ***/
+char	*ft_readfile(char *file_name);
 
-/*** read_file.c ***/
-int		read_file(int argc, char *map_name);
+/*** ft_spilt.c ***/
+char	**ft_split(char *str, char spliter);
 
 /*** utility.c ***/
 int		ft_strlen(char *str);
 int		ft_atoi(char *str);
 void	ft_putstr(char *str);
-void	msg_error(void);
 
 /*** ft_string.c ***/
-int	ft_spec_strlen(char *str, char c);
+int	ft_ptr_strlen(char **str, char c);
+int	ft_nptr_strlen(char *str, char c);
 int	ft_wordcount(char *str, char c);
-int	ft_is_not_printable(char *str);
+int	ft_is_not_printable(char *str, char not);
+int	ft_is_same(char *str);
 
 #endif
