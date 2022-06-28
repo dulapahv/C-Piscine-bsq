@@ -110,12 +110,20 @@ void	find_ans_pos(t_map *map)
 	}
 }
 
+// void	swarm(t_map *map)
+// {
+	
+// }
+
+
 int	solve(t_map *map)
 {
 	reverse(map);
 	back_traverse(map);
 	find_max(map);
 	find_ans_pos(map);
+	//swarm(map);
+	printf("x = %d, y = %d\n", map->ans_pos[0], map->ans_pos[1]);
 	for (int i = 0; i < 5; i++) {
 		for (int j = 0; j < 5; j++)
 		{
