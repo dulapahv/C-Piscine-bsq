@@ -20,9 +20,10 @@ typedef struct s_map
 {
 	int		row;
 	int		col;
+	int		max;
 	int		**arr;
 	int		**obs_pos;
-	int		**ans_pos;
+	int		*ans_pos;
 	char	obs;
 	char	free;
 	char	square;

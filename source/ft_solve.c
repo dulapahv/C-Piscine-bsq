@@ -68,10 +68,54 @@ void	back_traverse(t_map *map)
 	}
 }
 
+void	find_max(t_map *map)
+{
+	int	i;
+	int	j;
+
+	map->max = map->arr[0][0];
+	i = 0;
+	while (i < map->row)
+	{
+		j = 0;
+		while (j < map->col)
+		{
+			if (map->arr[i][j] > map->max)
+				map->max = map->arr[i][j];
+			j++;
+		}
+		i++;
+	}
+}
+
+void	find_ans_pos(t_map *map)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	while (i < map->row)
+	{
+		j = 0;
+		while (j < map->col)
+		{
+			if (map->arr[i][j] == map->max)
+			{
+				map->ans_pos[0] = i;
+				map->ans_pos[1] = j;
+			}
+			j++;
+		}
+		i++;
+	}
+}
+
 int	solve(t_map *map)
 {
 	reverse(map);
 	back_traverse(map);
+	find_max(map);
+	find_ans_pos(map);
 	for (int i = 0; i < 5; i++) {
 		for (int j = 0; j < 5; j++)
 		{
@@ -93,6 +137,7 @@ int main() {
 	map->obs_pos = (int **)malloc(5 * sizeof(int *));
 	for (int i=0; i<5; i++)
 		map->obs_pos[i] = (int *)malloc(5 * sizeof(int));
+	map->ans_pos = (int *)malloc(2 * sizeof(int));
 
 	map->arr[0][0] = 0; map->obs_pos[0][0] = 0;
 	map->arr[0][1] = 1; map->obs_pos[0][1] = 1;
@@ -122,7 +167,6 @@ int main() {
 
 	map->row = 5;
 	map->col = 5;
-
 
 	solve(map);
 }
