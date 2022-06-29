@@ -1,4 +1,4 @@
-SRC	= ./source/ft_check_file.c ./source/ft_map_utility.c ./source/ft_readfile.c ./source/ft_solve.c ./source/ft_split.c ./source/ft_string.c ./source/ft_utility.c ./source/vlad.c
+SRC	= ./source/ft_check_file.c ./source/ft_map_utility.c ./source/ft_readfile.c ./source/ft_solve.c ./source/ft_split.c ./source/ft_string.c ./source/ft_utility.c ./source/ft_solve_utility.c ./source/ft_solve_utility2.c ./source/vlad.c 
 
 NAME	= bsq
 

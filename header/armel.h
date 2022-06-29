@@ -48,4 +48,19 @@ int		ft_wordcount(char *str, char c);
 int		ft_is_not_printable(char *str, char not);
 int		ft_is_same(char *str);
 
+/*** ft_solve_utility.c ***/
+void	reverse(t_map *map);
+int		min3(int a, int b, int c);
+void	back_traverse(t_map *map);
+void	find_max(t_map *map);
+int		find_ans_pos(t_map *map);
+
+/*** ft_solve_utility2.c ***/
+int		swarm_row(t_map *map);
+int		swarm_col(t_map *map);
+void	adjust(t_map *map);
+
+/*** ft_solve.c ***/
+int		solve(t_map *map);
+
 #endif
