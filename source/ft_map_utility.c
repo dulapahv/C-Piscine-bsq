@@ -34,7 +34,7 @@ void	setup_char(t_map *map, char obs, char free, char square)
 
 void	setup_map(t_map *map, int row, int column, int **arr)
 {
-    int	i;
+	int	i;
 	int	j;
 
 	i = 0;

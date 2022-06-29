@@ -18,12 +18,14 @@
 
 typedef struct s_map
 {
-	int		map_row;
-	int		map_column;
+	int		row;
+	int		col;
+	int		max;
 	int		**arr;
-	int		**obstacle_pos;
-	int		**ans_pos;
-	char	obstacle;
+	int		**obs_pos;
+	int		*ans_pos_start;
+	int		*ans_pos_end;
+	char	obs;
 	char	free;
 	char	square;
 }	t_map;
@@ -40,10 +42,10 @@ int		ft_atoi(char *str);
 void	ft_putstr(char *str);
 
 /*** ft_string.c ***/
-int	ft_ptr_strlen(char **str, char c);
-int	ft_nptr_strlen(char *str, char c);
-int	ft_wordcount(char *str, char c);
-int	ft_is_not_printable(char *str, char not);
-int	ft_is_same(char *str);
+int		ft_ptr_strlen(char **str, char c);
+int		ft_nptr_strlen(char *str, char c);
+int		ft_wordcount(char *str, char c);
+int		ft_is_not_printable(char *str, char not);
+int		ft_is_same(char *str);
 
 #endif

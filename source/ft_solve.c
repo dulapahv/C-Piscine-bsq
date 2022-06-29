@@ -38,14 +38,14 @@ void	reverse(t_map *map)
 
 int	min3(int a, int b, int c)
 {
-	int min;
-	
+	int	min;
+
 	min = a;
 	if (b < min)
 		min = b;
 	if (c < min)
 		min = c;
-	return min;
+	return (min);
 }
 
 void	back_traverse(t_map *map)
@@ -61,7 +61,8 @@ void	back_traverse(t_map *map)
 		{
 			if (!map->obs_pos[i][j])
 				if (i <= map->row - 2 && j <= map->col - 2)
-					map->arr[i][j] = 1 + min3(map->arr[i][j + 1], map->arr[i + 1][j + 1], map->arr[i + 1][j]);
+					map->arr[i][j] = 1 + min3(map->arr[i][j + 1],
+						map->arr[i + 1][j + 1], map->arr[i + 1][j]);
 			j--;
 		}
 		i--;
@@ -158,6 +159,25 @@ int	swarm_col(t_map *map)
 	return (0);
 }
 
+void	adjust(t_map *map)
+{
+	int	max;
+	int	diff;
+
+	if (map->ans_pos_end[0] > map->ans_pos_end[1])
+		max = map->ans_pos_end[0];
+	else
+		max = map->ans_pos_end[1];
+	if (max > map->row || max > map->col)
+	{
+		if (max - map->row > max - map->col)
+			diff = max - map->row;
+		else
+			diff = max - map->col;
+	}
+	map->ans_pos_end[0] -= diff;
+	map->ans_pos_end[1] -= diff;
+}
 
 int	solve(t_map *map)
 {
@@ -167,46 +187,37 @@ int	solve(t_map *map)
 	find_ans_pos(map);
 	swarm_row(map);
 	swarm_col(map);
-
-	//printf("max = %d\n", map->max);
+	adjust(map);
 	printf("x = %d, y = %d\n", map->ans_pos_start[0], map->ans_pos_start[1]);
 	printf("x = %d, y = %d\n", map->ans_pos_end[0], map->ans_pos_end[1]);
-	// for (int i = 0; i < 5; i++) {
-	// 	for (int j = 0; j < 5; j++)
-	// 	{
-	// 		printf("%d", map->arr[i][j]);
-	// 	}
-	// 	printf("\n");
-	// }
-	
-
-	return (1);
+	return (0);
 }
 
 
-int main() {
-	t_map *map;
+int	main() {
+	t_map	*map;
+
 	map = malloc(sizeof(map));
-	map->arr = (int **)malloc(5 * sizeof(int *));
-	for (int i=0; i<5; i++)
-		map->arr[i] = (int *)malloc(5 * sizeof(int));
-	map->obs_pos = (int **)malloc(5 * sizeof(int *));
-	for (int i=0; i<5; i++)
-		map->obs_pos[i] = (int *)malloc(5 * sizeof(int));
+	map->arr = (int **)malloc(6 * sizeof(int *));
+	for (int i=0; i<6; i++)
+		map->arr[i] = (int *)malloc(6 * sizeof(int));
+	map->obs_pos = (int **)malloc(6 * sizeof(int *));
+	for (int i=0; i<6; i++)
+		map->obs_pos[i] = (int *)malloc(6 * sizeof(int));
 	map->ans_pos_start = (int *)malloc(2 * sizeof(int));
 	map->ans_pos_end = (int *)malloc(2 * sizeof(int));
 
 	map->arr[0][0] = 0; map->obs_pos[0][0] = 0;
-	map->arr[0][1] = 1; map->obs_pos[0][1] = 1;
-	map->arr[0][2] = 0; map->obs_pos[0][2] = 0;
-	map->arr[0][3] = 0; map->obs_pos[0][3] = 0;
-	map->arr[0][4] = 0; map->obs_pos[0][4] = 0;
-	map->arr[1][0] = 0; map->obs_pos[1][0] = 0;
-	map->arr[1][1] = 0; map->obs_pos[1][1] = 0;
-	map->arr[1][2] = 0; map->obs_pos[1][2] = 0;
+	map->arr[0][1]= 0; map->obs_pos[0][1]= 0;
+	map->arr[0][2]= 0; map->obs_pos[0][2]= 0;
+	map->arr[0][3]= 0; map->obs_pos[0][3]= 0;
+	map->arr[0][4]= 0; map->obs_pos[0][4]= 0;
+	map->arr[1][0]= 0; map->obs_pos[1][0]= 0;
+	map->arr[1][1]= 1; map->obs_pos[1][1]= 1;
+	map->arr[1][2]= 0; map->obs_pos[1][2]= 0;
 	map->arr[1][3] = 0; map->obs_pos[1][3] = 0;
 	map->arr[1][4] = 0; map->obs_pos[1][4] = 0;
-	map->arr[2][0] = 1; map->obs_pos[2][0] = 1;
+	map->arr[2][0] = 0; map->obs_pos[2][0] = 0;
 	map->arr[2][1] = 0; map->obs_pos[2][1] = 0;
 	map->arr[2][2] = 0; map->obs_pos[2][2] = 0;
 	map->arr[2][3] = 0; map->obs_pos[2][3] = 0;
@@ -215,25 +226,36 @@ int main() {
 	map->arr[3][1] = 0; map->obs_pos[3][1] = 0;
 	map->arr[3][2] = 0; map->obs_pos[3][2] = 0;
 	map->arr[3][3] = 0; map->obs_pos[3][3] = 0;
-	map->arr[3][4] = 1; map->obs_pos[3][4] = 1;
+	map->arr[3][4] = 0; map->obs_pos[3][4] = 0;
 	map->arr[4][0] = 0; map->obs_pos[4][0] = 0;
 	map->arr[4][1] = 0; map->obs_pos[4][1] = 0;
-	map->arr[4][2] = 1; map->obs_pos[4][2] = 1;
+	map->arr[4][2] = 0; map->obs_pos[4][2] = 0;
 	map->arr[4][3] = 0; map->obs_pos[4][3] = 0;
 	map->arr[4][4] = 0; map->obs_pos[4][4] = 0;
+	map->arr[5][0] = 0; map->obs_pos[5][0] = 0;
+	map->arr[5][1] = 0; map->obs_pos[5][1] = 0;
+	map->arr[5][2] = 0; map->obs_pos[5][2] = 0;
+	map->arr[5][3] = 0; map->obs_pos[5][3] = 0;
+	map->arr[5][4] = 0; map->obs_pos[5][4] = 0;
+	map->arr[5][5] = 0; map->obs_pos[5][5] = 0;
 
 	map->row = 5;
 	map->col = 5;
 
 	solve(map);
+
+	if (map->ans_pos_start[0] == 0 && map->ans_pos_start[1] == 0)
+		if (map->ans_pos_end[0] == 0 && map->ans_pos_end[1] == 0)
+			printf("No Solution\n");
 }
 
 /*
 
-{{0, 1, 0, 0, 0},
-{0, 0, 0 ,0 ,0},
-{1, 0, 0, 0, 0},
-{0, 0, 0, 0, 1},
-{0, 0, 1, 0, 0}}
+{{0, 0, 0, 0, 0, 0},
+{0, 0, 0, 0, 0, 0},
+{0, 0, 0, 0, 0, 0},
+{0, 0, 0, 0, 0, 0},
+{0, 0, 0, 0, 0, 0},
+{0, 0, 0, 0, 0, 0}}
 
 */
