@@ -91,11 +91,11 @@ void    ft_arr_print(t_map *map)
         {
             if (i >= map->ans_pos_start[0] && i <= map->ans_pos_end[0] &&
                 j >= map->ans_pos_start[1] && j <= map->ans_pos_end[1])
-                    write(1, "#", 1);
+                    write(1, &map->square, 1);
             else if (map->obs_pos[i][j])
-                write(1, "o", 1);
+                write(1, &map->obs, 1);
             else
-                write(1, ".", 1);
+                write(1, &map->free, 1);
             j++;
         }
         write(1, "\n", 1);

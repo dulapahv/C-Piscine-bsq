@@ -94,6 +94,8 @@ int	find_ans_pos(t_map *map)
 	int	j;
 
 	i = 0;
+	map->ans_pos_start = (int *)malloc(2 * sizeof(int));
+	map->ans_pos_end = (int *)malloc(2 * sizeof(int));
 	while (i < map->row)
 	{
 		j = 0;
