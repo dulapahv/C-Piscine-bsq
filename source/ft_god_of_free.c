@@ -6,17 +6,17 @@
 /*   By: tponutha <tponutha@student.42bangkok.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/29 13:40:37 by tponutha          #+#    #+#             */
-/*   Updated: 2022/06/29 13:40:39 by tponutha         ###   ########.fr       */
+/*   Updated: 2022/06/29 16:48:19 by tponutha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../header/armel.h"
 
-void    ft_free_box(char ***box)
+void	ft_free_box(char ***box)
 {
-    int i;
+	int	i;
 
-    i = 0;
+	i = 0;
 	while (box[0][i])
 	{
 		free(box[0][i]);

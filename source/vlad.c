@@ -6,7 +6,7 @@
 /*   By: duvibuls <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/27 20:30:23 by duvibuls          #+#    #+#             */
-/*   Updated: 2022/06/28 01:28:51 by tponutha         ###   ########.fr       */
+/*   Updated: 2022/06/29 16:51:44 by tponutha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	msg_error(void)
 	return (0);
 }
 
-int	ft_if_fail(t_map *pmap,char *content)
+int	ft_if_fail(t_map *pmap, char *content)
 {
 	int	flag;
 
@@ -53,7 +53,7 @@ void	ft_run_program(int argc, char **argv)
 				free(content);
 			}
 		}
-		i++;	
+		i++;
 	}
 }
 

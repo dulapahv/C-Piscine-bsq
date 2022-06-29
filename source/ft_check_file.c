@@ -6,7 +6,7 @@
 /*   By: tponutha <tponutha@student.42bangkok.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/28 17:00:17 by tponutha          #+#    #+#             */
-/*   Updated: 2022/06/28 17:00:19 by tponutha         ###   ########.fr       */
+/*   Updated: 2022/06/29 16:47:11 by tponutha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ int	ft_check_size(char *exclude_first, int row)
 	return (0);
 }
 
-int ft_check_file(char *content)
+int	ft_check_file(char *content)
 {
 	int		row;
 	int		firstlen;
@@ -75,7 +75,7 @@ int ft_check_file(char *content)
 
 	if (ft_is_not_printable(content, '\n'))
 		return (1);
-    if (ft_read_description(content))
+	if (ft_read_description(content))
 		return (1);
 	firstlen = ft_nptr_strlen(content, '\n');
 	row = content[0] - '0';

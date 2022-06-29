@@ -6,7 +6,7 @@
 /*   By: duvibuls <duvibuls@student.42bangkok.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/28 02:32:34 by duvibuls          #+#    #+#             */
-/*   Updated: 2022/06/28 02:32:35 by duvibuls         ###   ########.fr       */
+/*   Updated: 2022/06/29 16:49:36 by tponutha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ int	ft_fill_arr(t_map *pmap)
 {
 	int	i;
 	int	j;
-	int flag;
+	int	flag;
 
 	i = 0;
 	flag = ft_map_allocate(pmap);
@@ -96,7 +96,7 @@ t_map	*ft_create_map(char *content)
 		return (NULL);
 	pmap = (t_map *)malloc(sizeof(t_map));
 	if (!pmap)
-		return (NULL);	
+		return (NULL);
 	box = ft_split(content, '\n');
 	if (!box)
 		return (ft_free_if_fail(&pmap, &box, 0));

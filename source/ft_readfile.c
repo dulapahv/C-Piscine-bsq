@@ -6,7 +6,7 @@
 /*   By: tponutha <tponutha@student.42bangkok.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/28 17:00:35 by tponutha          #+#    #+#             */
-/*   Updated: 2022/06/28 17:00:36 by tponutha         ###   ########.fr       */
+/*   Updated: 2022/06/29 16:50:21 by tponutha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,9 +34,9 @@ char	*ft_delete_useless_line(char *str, int endline)
 
 char	*ft_readfile(char *file_name)
 {
-    int		fd;
-    int		filelen;
-    char	*content;
+	int		fd;
+	int		filelen;
+	char	*content;
 
 	content = (char *)malloc(sizeof(char) * BUFFER + 1);
 	if (!content)

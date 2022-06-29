@@ -6,7 +6,7 @@
 /*   By: tponutha <tponutha@student.42bangkok.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/29 12:08:37 by tponutha          #+#    #+#             */
-/*   Updated: 2022/06/29 12:08:40 by tponutha         ###   ########.fr       */
+/*   Updated: 2022/06/29 16:48:51 by tponutha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,9 +62,6 @@ int	ft_fill_obs(t_map *pmap, char **box)
 	}
 	return (0);
 }
-
-
-
 /*
 #include <stdio.h>
 int main()
