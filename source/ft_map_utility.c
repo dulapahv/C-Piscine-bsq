@@ -92,16 +92,18 @@ t_map	*ft_create_map(char *content)
 	char	**box;
 	t_map	*pmap;
 
+	if (!content)
+		return (NULL);
 	pmap = (t_map *)malloc(sizeof(t_map));
 	if (!pmap)
-		return (NULL);
+		return (NULL);	
 	box = ft_split(content, '\n');
 	if (!box)
 		return (ft_free_if_fail(&pmap, &box, 0));
 	ft_setup_object(pmap, box);
 	if (ft_fill_arr(pmap))
 		return (ft_free_if_fail(&pmap, &box, 1));
-	if (ft_locate_obs(pmap, &box[1]))
+	if (ft_fill_obs(pmap, &box[1]))
 		return (ft_free_if_fail(&pmap, &box, 2));
 	ft_free_box(&box);
 	return (pmap);

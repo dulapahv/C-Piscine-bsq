@@ -20,6 +20,9 @@ int	msg_error(void)
 
 int	ft_if_fail(t_map *pmap,char *content)
 {
+	int	flag;
+
+	flag = (int)(!content || ft_check_file(content) || !pmap);
 	if (!content)
 		write(1, "Error\n", 6);
 	if (ft_check_file(content) || !pmap)
@@ -27,7 +30,7 @@ int	ft_if_fail(t_map *pmap,char *content)
 		write(1, "Error\n", 6);
 		free(content);
 	}
-	return (!content || ft_check_file(content) || !pmap);
+	return (flag);
 }
 
 void	ft_run_program(int argc, char **argv)
@@ -36,17 +39,21 @@ void	ft_run_program(int argc, char **argv)
 	char	*content;
 	t_map	*map;
 
-	i = 1;
-	while (i < argc)
+	i = 0;
+	while (i < argc - 1)
 	{
 		content = ft_readfile(argv[i]);
-		map = ft_create_map(content);
-		if (!ft_if_fail(map, content))
+		if (content != NULL)
 		{
-			ft_free_complete_map(&map);
+			map = ft_create_map(content);
+			if (!ft_if_fail(map, content))
+			{
+				solve(map);
+				ft_free_complete_map(&map);
+				free(content);
+			}
 		}
-		i++;
-		free(content);
+		i++;	
 	}
 }
 

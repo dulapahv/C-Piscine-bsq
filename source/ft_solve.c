@@ -11,9 +11,8 @@
 /* ************************************************************************** */
 
 #include "../header/armel.h"
-#include <stdio.h>
 
-int	solve(t_map *map)
+void	solve(t_map *map)
 {
 	reverse(map);
 	back_traverse(map);
@@ -22,10 +21,7 @@ int	solve(t_map *map)
 	swarm_row(map);
 	swarm_col(map);
 	adjust(map);
-	printf("x = %d, y = %d\n", map->ans_pos_start[0], map->ans_pos_start[1]);
-	printf("x = %d, y = %d\n", map->ans_pos_end[0], map->ans_pos_end[1]);
 	ft_arr_print(map);
-	return (0);
 }
 
 /*

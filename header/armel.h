@@ -15,7 +15,8 @@
 # include <fcntl.h>
 # include <stdlib.h>
 # include <unistd.h>
-
+#include <stdio.h>
+#define D printf("OK\n");
 typedef struct s_map
 {
 	int		row;
@@ -34,7 +35,7 @@ typedef struct s_map
 char	*ft_readfile(char *file_name);
 
 /*** ft_locate_obs.c ***/
-int	ft_locate_obs(t_map *pmap, char **box);
+int	ft_fill_obs(t_map *pmap, char **box);
 
 /*** ft_spilt.c ***/
 char	**ft_split(char *str, char spliter);
@@ -76,6 +77,6 @@ void	adjust(t_map *map);
 void    ft_arr_print(t_map *map);
 
 /*** ft_solve.c ***/
-int		solve(t_map *map);
+void	solve(t_map *map);
 
 #endif
