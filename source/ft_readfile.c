@@ -51,12 +51,11 @@ char	*ft_readfile(char *file_name)
 	content = ft_delete_useless_line(content, filelen);
 	return (content);
 }
-
 /*
 #include <stdio.h>
 int	main()
 {
-	char *a = ft_readfile("../map/map1");
+	char *a = ft_readfile("map1");
 	printf("%s\n", a);
 }
 */

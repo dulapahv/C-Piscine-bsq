@@ -33,20 +33,34 @@ typedef struct s_map
 /*** ft_readfile.c ***/
 char	*ft_readfile(char *file_name);
 
+/*** ft_locate_obs.c ***/
+int	ft_locate_obs(t_map *pmap, char **box);
+
 /*** ft_spilt.c ***/
 char	**ft_split(char *str, char spliter);
 
-/*** utility.c ***/
+/*** ft_utility.c ***/
 int		ft_strlen(char *str);
 int		ft_atoi(char *str);
 void	ft_putstr(char *str);
 
+/*** ft_map_utility.c ***/
+t_map	*ft_create_map(char *content);
+
+/*** ft_god_of_free.c ***/
+void    ft_free_box(char ***box);
+void	ft_free_arr(t_map *map);
+void	ft_free_complete_map(t_map **map);
+
+/*** ft_check_file.c ***/
+int ft_check_file(char *content);
+
 /*** ft_string.c ***/
-int		ft_ptr_strlen(char **str, char c);
-int		ft_nptr_strlen(char *str, char c);
-int		ft_wordcount(char *str, char c);
-int		ft_is_not_printable(char *str, char not);
-int		ft_is_same(char *str);
+int	ft_ptr_strlen(char **str, char c);
+int	ft_nptr_strlen(char *str, char c);
+int	ft_wordcount(char *str, char c);
+int	ft_is_not_printable(char *str, char not);
+int	ft_is_same(char *str);
 
 /*** ft_solve_utility.c ***/
 void	reverse(t_map *map);

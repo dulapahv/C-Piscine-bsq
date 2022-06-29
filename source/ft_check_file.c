@@ -73,8 +73,6 @@ int ft_check_file(char *content)
 	char	free;
 	char	obstacle;
 
-	if (!content)
-		return (1);
 	if (ft_is_not_printable(content, '\n'))
 		return (1);
     if (ft_read_description(content))

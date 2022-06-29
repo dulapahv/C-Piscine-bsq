@@ -28,7 +28,7 @@ int	solve(t_map *map)
 	return (0);
 }
 
-
+/*
 int	main() {
 	t_map	*map;
 
@@ -42,13 +42,13 @@ int	main() {
 	map->ans_pos_start = (int *)malloc(2 * sizeof(int));
 	map->ans_pos_end = (int *)malloc(2 * sizeof(int));
 
-	map->arr[0][0] = 0; map->obs_pos[0][0] = 0;
+	map->arr[0][0] = 1; map->obs_pos[0][0] = 1;
 	map->arr[0][1]= 0; map->obs_pos[0][1]= 0;
 	map->arr[0][2]= 0; map->obs_pos[0][2]= 0;
 	map->arr[0][3]= 0; map->obs_pos[0][3]= 0;
 	map->arr[0][4]= 0; map->obs_pos[0][4]= 0;
 	map->arr[1][0]= 0; map->obs_pos[1][0]= 0;
-	map->arr[1][1]= 1; map->obs_pos[1][1]= 1;
+	map->arr[1][1]= 0; map->obs_pos[1][1]= 0;
 	map->arr[1][2]= 0; map->obs_pos[1][2]= 0;
 	map->arr[1][3] = 0; map->obs_pos[1][3] = 0;
 	map->arr[1][4] = 0; map->obs_pos[1][4] = 0;
@@ -57,22 +57,22 @@ int	main() {
 	map->arr[2][2] = 0; map->obs_pos[2][2] = 0;
 	map->arr[2][3] = 0; map->obs_pos[2][3] = 0;
 	map->arr[2][4] = 0; map->obs_pos[2][4] = 0;
-	map->arr[3][0] = 0; map->obs_pos[3][0] = 0;
+	map->arr[3][0] = 1; map->obs_pos[3][0] = 1;
 	map->arr[3][1] = 0; map->obs_pos[3][1] = 0;
 	map->arr[3][2] = 0; map->obs_pos[3][2] = 0;
 	map->arr[3][3] = 0; map->obs_pos[3][3] = 0;
 	map->arr[3][4] = 0; map->obs_pos[3][4] = 0;
-	map->arr[4][0] = 0; map->obs_pos[4][0] = 0;
+	map->arr[4][0] = 1; map->obs_pos[4][0] = 1;
 	map->arr[4][1] = 0; map->obs_pos[4][1] = 0;
 	map->arr[4][2] = 0; map->obs_pos[4][2] = 0;
 	map->arr[4][3] = 0; map->obs_pos[4][3] = 0;
 	map->arr[4][4] = 0; map->obs_pos[4][4] = 0;
 	map->arr[5][0] = 0; map->obs_pos[5][0] = 0;
 	map->arr[5][1] = 0; map->obs_pos[5][1] = 0;
-	map->arr[5][2] = 0; map->obs_pos[5][2] = 0;
+	map->arr[5][2] = 1; map->obs_pos[5][2] = 1;
 	map->arr[5][3] = 0; map->obs_pos[5][3] = 0;
 	map->arr[5][4] = 0; map->obs_pos[5][4] = 0;
-	map->arr[5][5] = 0; map->obs_pos[5][5] = 0;
+	map->arr[5][5] = 1; map->obs_pos[5][5] = 1;
 
 	map->row = 5;
 	map->col = 5;
@@ -86,7 +86,7 @@ int	main() {
 		if (map->ans_pos_end[0] == 0 && map->ans_pos_end[1] == 0)
 			printf("No Solution\n");
 }
-
+*/
 /*
 
 {{0, 0, 0, 0, 0, 0},

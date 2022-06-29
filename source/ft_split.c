@@ -81,13 +81,9 @@ char	**ft_fill_word(char **bigbox, char *str, char spt)
 
 char	**ft_split(char *str, char spliter)
 {
-	int		i;
-	int		j;
-	int		k;
 	char	**bigbox;
 
-	i = 0;
-	j = 0;
+	bigbox = NULL;
 	bigbox = ft_allocate(bigbox, str, spliter);
 	if (!bigbox)
 		return (NULL);

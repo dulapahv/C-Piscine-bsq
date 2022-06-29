@@ -12,27 +12,48 @@
 
 #include "../header/armel.h"
 
-int	main(int argc, char **argv)
+int	msg_error(void)
 {
-	int	i;
+	write(1, "Error\n", 6);
+	return (0);
+}
+
+int	ft_if_fail(t_map *pmap,char *content)
+{
+	if (!content)
+		write(1, "Error\n", 6);
+	if (ft_check_file(content) || !pmap)
+	{
+		write(1, "Error\n", 6);
+		free(content);
+	}
+	return (!content || ft_check_file(content) || !pmap);
+}
+
+void	ft_run_program(int argc, char **argv)
+{
+	int		i;
+	char	*content;
+	t_map	*map;
 
 	i = 1;
-	if (argc < 2)
+	while (i < argc)
 	{
-		msg_error();
-		return (0);
-	}
-	else
-	{
-		while (i < argc)
+		content = ft_readfile(argv[i]);
+		map = ft_create_map(content);
+		if (!ft_if_fail(map, content))
 		{
-			if (read_file(argc, argv[i]) == 0)
-			{
-				msg_error();
-				break ;
-			}
-			i++;
+			ft_free_complete_map(&map);
 		}
+		i++;
+		free(content);
 	}
+}
+
+int	main(int argc, char **argv)
+{
+	if (argc < 2)
+		return (msg_error());
+	ft_run_program(argc, &argv[1]);
 	return (0);
 }
