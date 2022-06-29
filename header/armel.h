@@ -74,6 +74,7 @@ int		find_ans_pos(t_map *map);
 int		swarm_row(t_map *map);
 int		swarm_col(t_map *map);
 void	adjust(t_map *map);
+void	adjust2(t_map *map);
 void    ft_arr_print(t_map *map);
 
 /*** ft_solve.c ***/

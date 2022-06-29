@@ -57,7 +57,7 @@ int	swarm_col(t_map *map)
 	map->ans_pos_end[1] = limit + map->ans_pos_start[1];
 	return (0);
 }
-
+#include <stdio.h>
 void	adjust(t_map *map)
 {
 	int	max;
@@ -76,6 +76,13 @@ void	adjust(t_map *map)
 	}
 	map->ans_pos_end[0] -= diff;
 	map->ans_pos_end[1] -= diff;
+
+}
+
+void	adjust2(t_map *map)
+{
+	map->ans_pos_end[0] -= 1;
+	map->ans_pos_end[1] -= 1;
 }
 
 void    ft_arr_print(t_map *map)
@@ -84,10 +91,10 @@ void    ft_arr_print(t_map *map)
     int j;
 
     i = 0;
-    while (i <= map->row)
+    while (i < map->row)
     {
         j = 0;
-        while (j <= map->col)
+        while (j < map->col)
         {
             if (i >= map->ans_pos_start[0] && i <= map->ans_pos_end[0] &&
                 j >= map->ans_pos_start[1] && j <= map->ans_pos_end[1])
