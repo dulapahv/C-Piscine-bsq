@@ -61,7 +61,7 @@ void	back_traverse(t_map *map)
 			if (!map->obs_pos[i][j])
 				if (i <= map->row - 2 && j <= map->col - 2)
 					map->arr[i][j] = 1 + min3(map->arr[i][j + 1],
-						map->arr[i + 1][j + 1], map->arr[i + 1][j]);
+							map->arr[i + 1][j + 1], map->arr[i + 1][j]);
 			j--;
 		}
 		i--;

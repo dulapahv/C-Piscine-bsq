@@ -77,3 +77,28 @@ void	adjust(t_map *map)
 	map->ans_pos_end[0] -= diff;
 	map->ans_pos_end[1] -= diff;
 }
+
+void    ft_arr_print(t_map *map)
+{
+    int i;
+    int j;
+
+    i = 0;
+    while (i <= map->row)
+    {
+        j = 0;
+        while (j <= map->col)
+        {
+            if (i >= map->ans_pos_start[0] && i <= map->ans_pos_end[0] &&
+                j >= map->ans_pos_start[1] && j <= map->ans_pos_end[1])
+                    write(1, "#", 1);
+            else if (map->obs_pos[i][j])
+                write(1, "o", 1);
+            else
+                write(1, ".", 1);
+            j++;
+        }
+        write(1, "\n", 1);
+        i++;
+    }
+}

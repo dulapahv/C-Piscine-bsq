@@ -24,6 +24,7 @@ int	solve(t_map *map)
 	adjust(map);
 	printf("x = %d, y = %d\n", map->ans_pos_start[0], map->ans_pos_start[1]);
 	printf("x = %d, y = %d\n", map->ans_pos_end[0], map->ans_pos_end[1]);
+	ft_arr_print(map);
 	return (0);
 }
 
@@ -75,6 +76,9 @@ int	main() {
 
 	map->row = 5;
 	map->col = 5;
+	// map->free = '.';
+	// map->obs = 'o';
+	// map->square = '#';
 
 	solve(map);
 
